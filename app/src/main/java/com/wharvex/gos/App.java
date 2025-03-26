@@ -11,6 +11,6 @@ public class App {
   public static void main(String[] args) {
     var app = new App();
     System.out.println(app.getGreeting());
-    GOSLogger.log(app.getGreeting());
+    GOSLogger.logMain(app.getGreeting());
   }
 }
