@@ -12,8 +12,6 @@ public class App {
     var app = new App();
     System.out.println(app.getGreeting());
     GOSLogger.logMain(app.getGreeting());
-    Runtime.getRuntime()
-        .addShutdownHook(new Thread(new ShutdownRunnable("hey")) {
-        });
+    Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
   }
 }

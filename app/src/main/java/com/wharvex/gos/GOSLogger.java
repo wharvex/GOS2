@@ -9,39 +9,36 @@ import java.time.format.DateTimeFormatter;
 public class GOSLogger {
   public static void logMain(String message) {
     var xml = getLogXML(GOSLogDomain.MAIN, GOSLogLevel.INFO,
-        new TwoStackFrameWrappers(5, 4), message);
+        new TwoStackFrameWrappers(
+            GOSLoggerSingleton.getInstance().getStackFrameLevel1(),
+            GOSLoggerSingleton.getInstance().getStackFrameLevel2()),
+        message);
     GOSLoggerSingleton.getInstance().writeToFile(xml);
   }
 
   private static String getLogXML(GOSLogDomain domain, GOSLogLevel level,
-                                  TwoStackFrameWrappers stackFrames,
+                                  @NotNull TwoStackFrameWrappers stackFrames,
                                   String message) {
-    StringBuilder sb = new StringBuilder(500);
+    // Set up variables.
+    var sb = new StringBuilder();
+    var instant = DateTimeFormatter.ISO_INSTANT.format(Instant.now());
+    var il1 = GOSLoggerSingleton.getInstance().getIndentLevel1();
+    var il2 = GOSLoggerSingleton.getInstance().getIndentLevel2();
 
-    appendElementPartial(2, sb, "record");
+    // Append record element and its sub-elements.
+    appendElementPartial(il1, sb, "record", true);
+    appendElement(il2, sb, "date", instant);
+    appendElement(il2, sb, "logger", String.valueOf(domain));
+    appendElement(il2, sb, "level", String.valueOf(level));
+    appendElement(il2, sb, "prevClass", stackFrames.getFirstClassName());
+    appendElement(il2, sb, "prevMethod", stackFrames.getFirstMethodName());
+    appendElement(il2, sb, "class", stackFrames.getSecondClassName());
+    appendElement(il2, sb, "method", stackFrames.getSecondMethodName());
+    appendElement(il2, sb, "thread", Thread.currentThread().getName());
+    appendElement(il2, sb, "message", message);
+    appendElementPartial(il1, sb, "record", false);
 
-    Instant instant = Instant.now();
-
-    appendElement(4, sb, "date",
-        DateTimeFormatter.ISO_INSTANT.format(instant));
-
-    appendElement(4, sb, "logger", String.valueOf(domain));
-
-    appendElement(4, sb, "level", String.valueOf(level));
-
-    appendElement(4, sb, "prevClass", stackFrames.getFirstClassName());
-
-    appendElement(4, sb, "prevMethod", stackFrames.getFirstMethodName());
-
-    appendElement(4, sb, "class", stackFrames.getSecondClassName());
-
-    appendElement(4, sb, "method", stackFrames.getSecondMethodName());
-
-    appendElement(4, sb, "thread", Thread.currentThread().getName());
-
-    appendElement(4, sb, "message", message);
-
-    sb.append("</record>\n");
+    // Return the XML string.
     return sb.toString();
   }
 
@@ -55,8 +52,9 @@ public class GOSLogger {
 
   private static void appendElementPartial(int indentSpacesQty,
                                            @NotNull StringBuilder sb,
-                                           String element) {
+                                           String element, boolean isOpen) {
+    var firstBracket = isOpen ? "<" : "</";
     sb.append(" ".repeat(Math.max(0, indentSpacesQty)));
-    sb.append(MessageFormat.format("<{0}>\n", element));
+    sb.append(MessageFormat.format("{0}{1}>\n", firstBracket, element));
   }
 }
