@@ -1,6 +1,8 @@
 package com.wharvex.gos;
 
-import java.io.FileOutputStream;
+import org.jetbrains.annotations.NotNull;
+
+import java.text.MessageFormat;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 
@@ -8,63 +10,53 @@ public class GOSLogger {
   public static void logMain(String message) {
     var xml = getLogXML(GOSLogDomain.MAIN, GOSLogLevel.INFO,
         new TwoStackFrameWrappers(5, 4), message);
-    writeToFile(xml);
+    GOSLoggerSingleton.getInstance().writeToFile(xml);
   }
 
   private static String getLogXML(GOSLogDomain domain, GOSLogLevel level,
                                   TwoStackFrameWrappers stackFrames,
                                   String message) {
     StringBuilder sb = new StringBuilder(500);
-    sb.append("<record>\n");
+
+    appendElementPartial(2, sb, "record");
 
     Instant instant = Instant.now();
 
-    sb.append("  <date>");
-    DateTimeFormatter.ISO_INSTANT.formatTo(instant, sb);
-    sb.append("</date>\n");
+    appendElement(4, sb, "date",
+        DateTimeFormatter.ISO_INSTANT.format(instant));
 
-    sb.append("  <logger>");
-    sb.append(domain);
-    sb.append("</logger>\n");
+    appendElement(4, sb, "logger", String.valueOf(domain));
 
-    sb.append("  <level>");
-    sb.append(level);
-    sb.append("</level>\n");
+    appendElement(4, sb, "level", String.valueOf(level));
 
-    sb.append("  <prevClass>");
-    sb.append(stackFrames.getFirstClassName());
-    sb.append("</prevClass>\n");
+    appendElement(4, sb, "prevClass", stackFrames.getFirstClassName());
 
-    sb.append("  <prevMethod>");
-    sb.append(stackFrames.getFirstMethodName());
-    sb.append("</prevMethod>\n");
+    appendElement(4, sb, "prevMethod", stackFrames.getFirstMethodName());
 
-    sb.append("  <class>");
-    sb.append(stackFrames.getSecondClassName());
-    sb.append("</class>\n");
+    appendElement(4, sb, "class", stackFrames.getSecondClassName());
 
-    sb.append("  <method>");
-    sb.append(stackFrames.getSecondMethodName());
-    sb.append("</method>\n");
+    appendElement(4, sb, "method", stackFrames.getSecondMethodName());
 
-    sb.append("  <thread>");
-    sb.append(Thread.currentThread().getName());
-    sb.append("</thread>\n");
+    appendElement(4, sb, "thread", Thread.currentThread().getName());
 
-    sb.append("  <message>");
-    sb.append(message);
-    sb.append("</message>");
-    sb.append("\n");
+    appendElement(4, sb, "message", message);
+
     sb.append("</record>\n");
     return sb.toString();
   }
 
-  private static void writeToFile(String message) {
-    try (FileOutputStream fileOutputStream = new FileOutputStream(
-        GOSConfigSingleton.getInstance().getLogFile(), false)) {
-      fileOutputStream.write((message + "\n").getBytes());
-    } catch (Exception e) {
-      System.err.println("Error writing to file: " + e.getMessage());
-    }
+  private static void appendElement(int indentSpacesQty,
+                                    @NotNull StringBuilder sb,
+                                    String element,
+                                    String value) {
+    sb.append(" ".repeat(Math.max(0, indentSpacesQty)));
+    sb.append(MessageFormat.format("<{0}>{1}</{0}>\n", element, value));
+  }
+
+  private static void appendElementPartial(int indentSpacesQty,
+                                           @NotNull StringBuilder sb,
+                                           String element) {
+    sb.append(" ".repeat(Math.max(0, indentSpacesQty)));
+    sb.append(MessageFormat.format("<{0}>\n", element));
   }
 }
