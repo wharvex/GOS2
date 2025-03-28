@@ -9,9 +9,9 @@ public class App {
   }
 
   public static void main(String[] args) {
+    Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
     var app = new App();
     System.out.println(app.getGreeting());
     GOSLogger.logMain(app.getGreeting());
-    Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
   }
 }

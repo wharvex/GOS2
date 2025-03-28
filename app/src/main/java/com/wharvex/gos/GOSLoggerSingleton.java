@@ -17,7 +17,7 @@ public class GOSLoggerSingleton {
     stackFrameLevel2 = 5;
     indentLevel1 = 2;
     indentLevel2 = 4;
-    writeToFile("<records>");
+    writeToFile("<records>" + "\n");
   }
 
   public static GOSLoggerSingleton getInstance() {
@@ -46,7 +46,7 @@ public class GOSLoggerSingleton {
   public void writeToFile(String message) {
     try (FileOutputStream fileOutputStream = new FileOutputStream(logFile,
         true)) {
-      fileOutputStream.write((message + "\n").getBytes());
+      fileOutputStream.write((message).getBytes());
     } catch (Exception e) {
       System.err.println("Error writing to file: " + e.getMessage());
     }
