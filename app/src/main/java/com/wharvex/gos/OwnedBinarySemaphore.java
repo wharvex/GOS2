@@ -4,11 +4,11 @@ import java.text.MessageFormat;
 import java.util.concurrent.Semaphore;
 
 public class OwnedBinarySemaphore extends Semaphore {
-  private Thread ownerThread;
+  private final String ownerThreadName;
 
-  public OwnedBinarySemaphore(Thread ownerThread) {
+  public OwnedBinarySemaphore(String ownerThreadName) {
     super(0);
-    this.ownerThread = ownerThread;
+    this.ownerThreadName = ownerThreadName;
   }
 
   @Override
@@ -31,10 +31,10 @@ public class OwnedBinarySemaphore extends Semaphore {
   }
 
   private void validateThread() {
-    if (Thread.currentThread() != ownerThread) {
+    if (!Thread.currentThread().getName().equals(ownerThreadName)) {
       throw new IllegalStateException(MessageFormat.format(
           "Semaphore expected owner thread {0}, found {1}.",
-          ownerThread.getName(), Thread.currentThread().getName()));
+          ownerThreadName, Thread.currentThread().getName()));
     }
   }
 }
