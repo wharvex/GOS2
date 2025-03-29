@@ -1,6 +1,6 @@
 package com.wharvex.gos.kernelland;
 
-import com.wharvex.gos.AbstractProcess;
+import com.wharvex.gos.osland.AbstractProcess;
 import com.wharvex.gos.GOSLogger;
 
 public class KernelProcess extends AbstractProcess {

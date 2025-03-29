@@ -2,6 +2,7 @@ package com.wharvex.gos;
 
 import com.wharvex.gos.kernelland.KernelProcess;
 import com.wharvex.gos.userland.GoodbyeWorldProcess;
+import com.wharvex.gos.userland.HelloWorldProcess;
 
 import java.util.UUID;
 

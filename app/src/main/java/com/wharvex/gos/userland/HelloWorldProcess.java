@@ -1,4 +1,7 @@
-package com.wharvex.gos;
+package com.wharvex.gos.userland;
+
+import com.wharvex.gos.AbstractUserlandProcess;
+import com.wharvex.gos.GOSLogger;
 
 public class HelloWorldProcess extends AbstractUserlandProcess {
   public HelloWorldProcess(String threadName) {
