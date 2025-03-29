@@ -1,8 +1,6 @@
 package com.wharvex.gos.osland;
 
 import com.wharvex.gos.GOSLogger;
-import com.wharvex.gos.OwnedBinarySemaphore;
-import com.wharvex.gos.Stoppable;
 
 public abstract class AbstractProcess implements Stoppable {
   protected final OwnedBinarySemaphore semaphore;

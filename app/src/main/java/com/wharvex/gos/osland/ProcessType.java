@@ -1,4 +1,4 @@
-package com.wharvex.gos;
+package com.wharvex.gos.osland;
 
 public enum ProcessType {
   HELLOWORLD("helloWorldProcess"),

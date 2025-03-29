@@ -3,6 +3,9 @@
  */
 package com.wharvex.gos;
 
+import com.wharvex.gos.osland.ProcessType;
+import com.wharvex.gos.osland.ProcessWrapper;
+
 public class App {
   public String getGreeting() {
     return "Hello World!";

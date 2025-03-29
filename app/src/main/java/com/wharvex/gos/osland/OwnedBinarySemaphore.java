@@ -1,4 +1,4 @@
-package com.wharvex.gos;
+package com.wharvex.gos.osland;
 
 import java.text.MessageFormat;
 import java.util.concurrent.Semaphore;

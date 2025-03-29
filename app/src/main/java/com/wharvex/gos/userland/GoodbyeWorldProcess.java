@@ -1,6 +1,5 @@
 package com.wharvex.gos.userland;
 
-import com.wharvex.gos.AbstractUserlandProcess;
 import com.wharvex.gos.GOSLogger;
 
 public class GoodbyeWorldProcess extends AbstractUserlandProcess {
