@@ -1,4 +1,4 @@
-package com.wharvex.gos;
+package com.wharvex.gos.utils;
 
 public class ShutdownRunnable implements Runnable {
   @Override

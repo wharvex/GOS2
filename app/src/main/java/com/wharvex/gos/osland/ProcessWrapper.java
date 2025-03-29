@@ -1,6 +1,6 @@
 package com.wharvex.gos.osland;
 
-import com.wharvex.gos.GOSLogger;
+import com.wharvex.gos.utils.GOSLogger;
 import com.wharvex.gos.kernelland.KernelProcess;
 import com.wharvex.gos.userland.GoodbyeWorldProcess;
 import com.wharvex.gos.userland.HelloWorldProcess;

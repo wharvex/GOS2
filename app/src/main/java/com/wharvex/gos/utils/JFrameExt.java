@@ -1,4 +1,4 @@
-package com.wharvex.gos;
+package com.wharvex.gos.utils;
 
 import javax.swing.*;
 
