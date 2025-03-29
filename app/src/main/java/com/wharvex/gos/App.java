@@ -9,19 +9,12 @@ public class App {
   }
 
   public static void main(String[] args) {
+    // Close the root xml element of the log file when the app shuts down.
     Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
-    var app = new App();
-    System.out.println(app.getGreeting());
-    GOSLogger.logMain(app.getGreeting());
 
-    // Initialize the kernel process
+    // Start the kernel.
     var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
     kernelProcess.init();
     kernelProcess.start();
-
-    // Initialize the userland process
-    var userlandProcess = new ProcessWrapper(ProcessType.HELLOWORLD);
-    userlandProcess.init();
-    userlandProcess.start();
   }
 }

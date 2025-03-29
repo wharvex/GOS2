@@ -1,5 +1,7 @@
 package com.wharvex.gos;
 
+import com.wharvex.gos.kernelland.KernelProcess;
+
 import java.util.UUID;
 
 /**
@@ -30,6 +32,9 @@ public class ProcessWrapper {
   }
 
   public void init() {
+    GOSLogger.logMain("Initting process: " + name);
+    System.out.println(
+        Thread.currentThread().getName() + " initting " + name);
     thread.start();
   }
 

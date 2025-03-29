@@ -12,6 +12,6 @@ public class HelloWorldProcess extends AbstractUserlandProcess {
     stop();
     GOSLogger.logMain(
         "semaphore permits after stop: " + semaphore.availablePermits());
-    System.out.println("AbstractUserlandProcess is running");
+    System.out.println("HelloWorldProcess after stop");
   }
 }

@@ -1,4 +1,7 @@
-package com.wharvex.gos;
+package com.wharvex.gos.kernelland;
+
+import com.wharvex.gos.AbstractProcess;
+import com.wharvex.gos.GOSLogger;
 
 public class KernelProcess extends AbstractProcess {
   public KernelProcess(String threadName) {
@@ -12,6 +15,6 @@ public class KernelProcess extends AbstractProcess {
     stop();
     GOSLogger.logMain(
         "semaphore permits after stop: " + semaphore.availablePermits());
-    System.out.println("KernelProcess is running");
+    System.out.println(Thread.currentThread().getName() + " after stop");
   }
 }
