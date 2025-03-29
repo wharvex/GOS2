@@ -16,5 +16,15 @@ public class App {
     var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
     kernelProcess.init();
     kernelProcess.start();
+
+    // Start HelloWorldProcess.
+    var helloWorldProcess = new ProcessWrapper(ProcessType.HELLOWORLD);
+    helloWorldProcess.init();
+    helloWorldProcess.start();
+
+    // Start GoodbyeWorldProcess.
+    var goodbyeWorldProcess = new ProcessWrapper(ProcessType.GOODBYEWORLD);
+    goodbyeWorldProcess.init();
+    goodbyeWorldProcess.start();
   }
 }

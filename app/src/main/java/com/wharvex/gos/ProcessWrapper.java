@@ -1,6 +1,7 @@
 package com.wharvex.gos;
 
 import com.wharvex.gos.kernelland.KernelProcess;
+import com.wharvex.gos.userland.GoodbyeWorldProcess;
 
 import java.util.UUID;
 
@@ -20,6 +21,9 @@ public class ProcessWrapper {
     switch (processType) {
       case HELLOWORLD:
         task = new HelloWorldProcess(name);
+        break;
+      case GOODBYEWORLD:
+        task = new GoodbyeWorldProcess(name);
         break;
       case KERNEL:
         task = new KernelProcess(name);

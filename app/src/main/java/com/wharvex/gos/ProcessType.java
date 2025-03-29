@@ -2,6 +2,7 @@ package com.wharvex.gos;
 
 public enum ProcessType {
   HELLOWORLD("helloWorldProcess"),
+  GOODBYEWORLD("goodbyeWorldProcess"),
   KERNEL("kernelProcess");
 
   private final String typeName;

@@ -1,7 +1,10 @@
-package com.wharvex.gos;
+package com.wharvex.gos.userland;
 
-public class HelloWorldProcess extends AbstractUserlandProcess {
-  public HelloWorldProcess(String threadName) {
+import com.wharvex.gos.AbstractUserlandProcess;
+import com.wharvex.gos.GOSLogger;
+
+public class GoodbyeWorldProcess extends AbstractUserlandProcess {
+  public GoodbyeWorldProcess(String threadName) {
     super(threadName);
   }
 
