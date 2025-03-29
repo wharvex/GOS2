@@ -20,6 +20,15 @@ public class OwnedBinarySemaphore extends Semaphore {
 
   @Override
   public void release() {
+    while (!hasQueuedThreads()) {
+      try {
+        Thread.sleep(10);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        throw new IllegalStateException(
+            "Thread interrupted while waiting to release semaphore.");
+      }
+    }
     validatePermits();
     super.release();
   }
