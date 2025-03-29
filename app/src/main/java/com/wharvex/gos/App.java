@@ -13,5 +13,15 @@ public class App {
     var app = new App();
     System.out.println(app.getGreeting());
     GOSLogger.logMain(app.getGreeting());
+
+    // Initialize the kernel process
+    var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
+    kernelProcess.init();
+    kernelProcess.start();
+
+    // Initialize the userland process
+    var userlandProcess = new ProcessWrapper(ProcessType.USERLAND);
+    userlandProcess.init();
+    userlandProcess.start();
   }
 }

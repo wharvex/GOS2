@@ -4,14 +4,24 @@ import java.util.UUID;
 
 public class ProcessWrapper {
   private Thread thread;
-  private Stoppable runnable;
+  private Stoppable task;
   private String name;
 
-  public ProcessWrapper(Stoppable runnable, String nameBase) {
+  public ProcessWrapper(ProcessType processType) {
     var uuidSubstring = UUID.randomUUID().toString().substring(0, 8);
-    name = nameBase + "_" + uuidSubstring;
-    this.runnable = runnable;
-    thread = new Thread(runnable, name);
+    name = processType.getTypeName() + "_" + uuidSubstring;
+    switch (processType) {
+      case USERLAND:
+        task = new UserlandProcess(name);
+        break;
+      case KERNEL:
+        task = new KernelProcess(name);
+        break;
+      default:
+        throw new IllegalArgumentException(
+            "Unknown process type: " + processType);
+    }
+    thread = new Thread(task, name);
   }
 
   public void init() {
@@ -19,6 +29,6 @@ public class ProcessWrapper {
   }
 
   public void start() {
-    runnable.start();
+    task.start();
   }
 }

@@ -26,7 +26,8 @@ public class OwnedBinarySemaphore extends Semaphore {
 
   private void validatePermits() {
     if (availablePermits() > 0) {
-      throw new IllegalStateException("Semaphore has too many permits");
+      throw new IllegalStateException(
+          "Semaphore has too many permits: " + availablePermits());
     }
   }
 
