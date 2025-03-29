@@ -2,6 +2,11 @@ package com.wharvex.gos;
 
 import java.util.UUID;
 
+/**
+ * This class is an alternative to storing a Stoppable's thread in the
+ * Stoppable impl itself. I wanted an alternative to avoid "this-escape" in
+ * the constructor of a Stoppable impl when instantiating the thread.
+ */
 public class ProcessWrapper {
   private Thread thread;
   private Stoppable task;
@@ -11,8 +16,8 @@ public class ProcessWrapper {
     var uuidSubstring = UUID.randomUUID().toString().substring(0, 8);
     name = processType.getTypeName() + "_" + uuidSubstring;
     switch (processType) {
-      case USERLAND:
-        task = new UserlandProcess(name);
+      case HELLOWORLD:
+        task = new HelloWorldProcess(name);
         break;
       case KERNEL:
         task = new KernelProcess(name);

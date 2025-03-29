@@ -20,7 +20,7 @@ public class App {
     kernelProcess.start();
 
     // Initialize the userland process
-    var userlandProcess = new ProcessWrapper(ProcessType.USERLAND);
+    var userlandProcess = new ProcessWrapper(ProcessType.HELLOWORLD);
     userlandProcess.init();
     userlandProcess.start();
   }
