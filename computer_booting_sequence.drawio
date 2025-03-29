@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.1.1 Chrome/132.0.6834.210 Electron/34.3.3 Safari/537.36" version="26.1.1">
+  <diagram name="Page-1" id="1RUM8slciFeg2wBIYgI3">
+    <mxGraphModel dx="869" dy="507" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KzFuwDoD3zoakEdW8r76-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-1" target="KzFuwDoD3zoakEdW8r76-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-1" value="CPU jumps to a predefined memory location in ROM where BIOS is." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-2" value="Booting halts." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="595" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-3" target="KzFuwDoD3zoakEdW8r76-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-3" value="User presses the power button." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-4" target="KzFuwDoD3zoakEdW8r76-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-4" value="BIOS loads partition table into RAM; first partition starts its bootloader." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="820" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-5" target="KzFuwDoD3zoakEdW8r76-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-5" value="CPU executes a hardcoded JUMP instruction from a CPU register." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-6" target="KzFuwDoD3zoakEdW8r76-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-6" value="CPU starts executing BIOS directly from ROM." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-9" value="If POST fails" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-7" target="KzFuwDoD3zoakEdW8r76-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-10" value="If POST succeeds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KzFuwDoD3zoakEdW8r76-7" target="KzFuwDoD3zoakEdW8r76-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-7" value="BIOS performs hardware test (Power-On Self-Test)." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KzFuwDoD3zoakEdW8r76-8" value="Bootloader enters stage 2: loads OS kernel into RAM and hands over control." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="970" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
