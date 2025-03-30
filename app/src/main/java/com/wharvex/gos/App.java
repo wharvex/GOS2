@@ -31,4 +31,17 @@ public class App {
     goodbyeWorldProcess.init();
     goodbyeWorldProcess.start();
   }
+
+  public static void loadKernel() {
+    // Load the kernel.
+    var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
+    kernelProcess.init();
+    kernelProcess.start();
+  }
+
+  public static void requestShutdown() {
+    // Request shutdown.
+    System.out.println("Requesting shutdown...");
+    Runtime.getRuntime().exit(0);
+  }
 }
