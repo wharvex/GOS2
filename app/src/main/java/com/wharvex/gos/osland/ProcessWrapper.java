@@ -39,8 +39,6 @@ public class ProcessWrapper {
 
   public void init() {
     GOSLogger.logMain("Initting process: " + name);
-    System.out.println(
-        Thread.currentThread().getName() + " initting " + name);
     thread.start();
   }
 

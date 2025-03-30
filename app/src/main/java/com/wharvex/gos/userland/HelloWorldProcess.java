@@ -14,6 +14,5 @@ public class HelloWorldProcess extends AbstractUserlandProcess {
     stop();
     GOSLogger.logMain(
         "semaphore permits after stop: " + semaphore.availablePermits());
-    System.out.println(Thread.currentThread().getName() + " after stop");
   }
 }
