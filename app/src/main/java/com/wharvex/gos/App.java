@@ -3,7 +3,7 @@
  */
 package com.wharvex.gos;
 
-import com.wharvex.gos.utils.JFrameExt;
+import com.wharvex.gos.ui.JFrameExt;
 import com.wharvex.gos.utils.ShutdownRunnable;
 import com.wharvex.gos.osland.ProcessType;
 import com.wharvex.gos.osland.ProcessWrapper;
@@ -22,18 +22,5 @@ public class App {
     SwingUtilities.invokeLater(() -> {
       JFrameExt.getInstance().setVisible(true);
     });
-
-  }
-
-  public static void loadKernel() {
-    // Load the kernel.
-    var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
-    kernelProcess.init();
-    kernelProcess.start();
-  }
-
-  public static void requestShutdown() {
-    // Request shutdown.
-    Runtime.getRuntime().exit(0);
   }
 }

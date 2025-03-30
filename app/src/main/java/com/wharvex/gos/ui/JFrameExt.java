@@ -1,13 +1,14 @@
-package com.wharvex.gos.utils;
+package com.wharvex.gos.ui;
 
 import com.wharvex.gos.App;
+import com.wharvex.gos.cpuland.Bootloader;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class JFrameExt extends JFrame {
   private JTextArea console;
-  private JButton kernelLoadButton;
+  private JButton startOSButton;
   private JButton shutdownButton;
   private static JFrameExt instance;
 
@@ -17,7 +18,7 @@ public class JFrameExt extends JFrame {
 
   private void initialize() {
     // Configure frame.
-    setTitle("OS Simulator");
+    setTitle("CPU Land");
     setSize(600, 400);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
@@ -26,21 +27,21 @@ public class JFrameExt extends JFrame {
     console = new JTextArea();
     console.setEditable(false);
     JScrollPane scrollPane = new JScrollPane(console);
-    kernelLoadButton = new JButton("Load Kernel");
+    startOSButton = new JButton("Start OS");
     shutdownButton = new JButton("Request Shutdown");
-    kernelLoadButton.setEnabled(true);
+    startOSButton.setEnabled(true);
     shutdownButton.setEnabled(false);
 
     // Create/configure/add control panel; add scroll pane.
     JPanel controlPanel = new JPanel();
-    controlPanel.add(kernelLoadButton);
+    controlPanel.add(startOSButton);
     controlPanel.add(shutdownButton);
     add(controlPanel, BorderLayout.NORTH);
     add(scrollPane, BorderLayout.CENTER);
 
     // Add event listeners.
-    kernelLoadButton.addActionListener(e -> App.loadKernel());
-    shutdownButton.addActionListener(e -> App.requestShutdown());
+    startOSButton.addActionListener(e -> Bootloader.startOS());
+    shutdownButton.addActionListener(e -> Bootloader.requestShutdown());
   }
 
   public static JFrameExt getInstance() {

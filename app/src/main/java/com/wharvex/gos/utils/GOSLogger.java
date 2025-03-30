@@ -1,5 +1,6 @@
 package com.wharvex.gos.utils;
 
+import com.wharvex.gos.ui.JFrameExt;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
