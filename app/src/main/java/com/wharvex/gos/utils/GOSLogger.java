@@ -16,10 +16,10 @@ public class GOSLogger {
             GOSLoggerSingleton.getInstance().getStackFrameLevel2()),
         message);
     GOSLoggerSingleton.getInstance().writeToFile(xml);
+    var currentThreadName = Thread.currentThread().getName();
     SwingUtilities.invokeLater(() -> {
       JFrameExt.getInstance().writeToConsole(
-          "Source: " + Thread.currentThread().getName() + "; Message: " +
-              message);
+          "Source: " + currentThreadName + "; Message: " + message);
     });
   }
 

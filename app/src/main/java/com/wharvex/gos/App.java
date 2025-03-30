@@ -5,8 +5,6 @@ package com.wharvex.gos;
 
 import com.wharvex.gos.ui.JFrameExt;
 import com.wharvex.gos.utils.ShutdownRunnable;
-import com.wharvex.gos.osland.ProcessType;
-import com.wharvex.gos.osland.ProcessWrapper;
 
 import javax.swing.*;
 
