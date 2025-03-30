@@ -3,9 +3,12 @@
  */
 package com.wharvex.gos;
 
+import com.wharvex.gos.utils.JFrameExt;
 import com.wharvex.gos.utils.ShutdownRunnable;
 import com.wharvex.gos.osland.ProcessType;
 import com.wharvex.gos.osland.ProcessWrapper;
+
+import javax.swing.*;
 
 public class App {
   public String getGreeting() {
@@ -16,20 +19,10 @@ public class App {
     // Close the root xml element of the log file when the app shuts down.
     Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
 
-    // Start the kernel.
-    var kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
-    kernelProcess.init();
-    kernelProcess.start();
+    SwingUtilities.invokeLater(() -> {
+      JFrameExt.getInstance().setVisible(true);
+    });
 
-    // Start HelloWorldProcess.
-    var helloWorldProcess = new ProcessWrapper(ProcessType.HELLOWORLD);
-    helloWorldProcess.init();
-    helloWorldProcess.start();
-
-    // Start GoodbyeWorldProcess.
-    var goodbyeWorldProcess = new ProcessWrapper(ProcessType.GOODBYEWORLD);
-    goodbyeWorldProcess.init();
-    goodbyeWorldProcess.start();
   }
 
   public static void loadKernel() {
@@ -41,7 +34,6 @@ public class App {
 
   public static void requestShutdown() {
     // Request shutdown.
-    System.out.println("Requesting shutdown...");
     Runtime.getRuntime().exit(0);
   }
 }

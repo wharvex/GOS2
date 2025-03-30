@@ -9,8 +9,9 @@ public class JFrameExt extends JFrame {
   private JTextArea console;
   private JButton kernelLoadButton;
   private JButton shutdownButton;
+  private static JFrameExt instance;
 
-  public JFrameExt() {
+  private JFrameExt() {
     initialize();
   }
 
@@ -40,5 +41,17 @@ public class JFrameExt extends JFrame {
     // Add event listeners.
     kernelLoadButton.addActionListener(e -> App.loadKernel());
     shutdownButton.addActionListener(e -> App.requestShutdown());
+  }
+
+  public static JFrameExt getInstance() {
+    if (instance == null) {
+      instance = new JFrameExt();
+    }
+    return instance;
+  }
+
+  public void writeToConsole(String message) {
+    console.append(message + "\n");
+    console.setCaretPosition(console.getDocument().getLength());
   }
 }

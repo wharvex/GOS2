@@ -2,6 +2,7 @@ package com.wharvex.gos.utils;
 
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.text.MessageFormat;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,11 @@ public class GOSLogger {
             GOSLoggerSingleton.getInstance().getStackFrameLevel2()),
         message);
     GOSLoggerSingleton.getInstance().writeToFile(xml);
+    SwingUtilities.invokeLater(() -> {
+      JFrameExt.getInstance().writeToConsole(
+          "Source: " + Thread.currentThread().getName() + "; Message: " +
+              message);
+    });
   }
 
   private static String getLogXML(GOSLogDomain domain, GOSLogLevel level,
