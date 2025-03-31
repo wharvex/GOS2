@@ -16,4 +16,8 @@ public interface Stoppable extends Runnable {
    * This should be called from a different thread.
    */
   void start();
+
+  void requestStop();
+
+  String getThreadName();
 }

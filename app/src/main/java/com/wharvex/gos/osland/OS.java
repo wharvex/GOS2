@@ -7,7 +7,7 @@ public class OS {
   private static List<ContextSwitchParameter> contextSwitchParameters;
 
   public static void loadKernel() {
-    kernelProcess = new ProcessWrapper(ProcessType.KERNEL);
+    kernelProcess = new ProcessWrapper();
     kernelProcess.init();
     kernelProcess.start();
   }

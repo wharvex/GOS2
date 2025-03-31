@@ -15,42 +15,19 @@ import java.util.UUID;
 public class ProcessWrapper {
   private Thread thread;
   private Stoppable task;
-  private String name;
+  private String threadName;
 
-  public ProcessWrapper(ProcessType processType) {
-    var uuidSubstring = UUID.randomUUID().toString().substring(0, 8);
-    name = processType.getTypeName() + "_" + uuidSubstring;
-    switch (processType) {
-      case HELLOWORLD:
-        task = new HelloWorldProcess(name);
-        break;
-      case GOODBYEWORLD:
-        task = new GoodbyeWorldProcess(name);
-        break;
-      case KERNEL:
-        task = new KernelProcess(name);
-        break;
-      default:
-        throw new IllegalArgumentException(
-            "Unknown process type: " + processType);
-    }
-    thread = new Thread(task, name);
+  public ProcessWrapper(Stoppable task) {
+    this.task = task;
+    thread = new Thread(task, task.getThreadName());
   }
 
-  public ProcessWrapper(Class<? extends AbstractProcess> processClass) {
-    var uuidSubstring = UUID.randomUUID().toString().substring(0, 8);
-    name = processClass.getName() + "_" + uuidSubstring;
-    try {
-      task = processClass.getDeclaredConstructor(String.class)
-          .newInstance(name);
-    } catch (Exception e) {
-      throw new RuntimeException("Failed to create process instance", e);
-    }
-    thread = new Thread(task, name);
+  public ProcessWrapper() {
+    this(new KernelProcess());
   }
 
   public void init() {
-    GOSLogger.logMain("Initting process: " + name);
+    GOSLogger.logMain("Initting process: " + threadName);
     thread.start();
   }
 

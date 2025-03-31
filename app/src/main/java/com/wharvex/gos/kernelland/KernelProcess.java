@@ -4,8 +4,8 @@ import com.wharvex.gos.osland.AbstractProcess;
 import com.wharvex.gos.utils.GOSLogger;
 
 public class KernelProcess extends AbstractProcess {
-  public KernelProcess(String threadName) {
-    super(threadName);
+  public KernelProcess() {
+    super("kernelProcess");
   }
 
   @Override
