@@ -1,11 +1,6 @@
 package com.wharvex.gos.osland;
 
 import com.wharvex.gos.utils.GOSLogger;
-import com.wharvex.gos.kernelland.KernelProcess;
-import com.wharvex.gos.userland.GoodbyeWorldProcess;
-import com.wharvex.gos.userland.HelloWorldProcess;
-
-import java.util.UUID;
 
 /**
  * This class is an alternative to storing a Stoppable's thread in the
@@ -23,7 +18,20 @@ public class ProcessWrapper {
   }
 
   public ProcessWrapper() {
-    this(new KernelProcess());
+    task = getKernelProcess();
+    thread = new Thread(task, task.getThreadName());
+  }
+
+  private AbstractProcess getKernelProcess() {
+    try {
+      var kernelClass =
+          Class.forName("com.wharvex.gos.kernelland.KernelProcess");
+      var kernelConstructor = kernelClass.getConstructor();
+      return (AbstractProcess) kernelConstructor.newInstance();
+    } catch (Exception e) {
+      GOSLogger.logMain("bad");
+      throw new RuntimeException(e);
+    }
   }
 
   public void init() {

@@ -11,4 +11,12 @@ public class OS {
     kernelProcess.init();
     kernelProcess.start();
   }
+
+  public static void createProcess() {
+
+  }
+
+  public static void switchProcess() {
+
+  }
 }
