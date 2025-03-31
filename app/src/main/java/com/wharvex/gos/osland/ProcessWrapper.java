@@ -37,6 +37,18 @@ public class ProcessWrapper {
     thread = new Thread(task, name);
   }
 
+  public ProcessWrapper(Class<? extends AbstractProcess> processClass) {
+    var uuidSubstring = UUID.randomUUID().toString().substring(0, 8);
+    name = processClass.getName() + "_" + uuidSubstring;
+    try {
+      task = processClass.getDeclaredConstructor(String.class)
+          .newInstance(name);
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to create process instance", e);
+    }
+    thread = new Thread(task, name);
+  }
+
   public void init() {
     GOSLogger.logMain("Initting process: " + name);
     thread.start();
@@ -44,5 +56,8 @@ public class ProcessWrapper {
 
   public void start() {
     task.start();
+  }
+
+  public void requestStop() {
   }
 }

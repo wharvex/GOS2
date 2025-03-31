@@ -11,6 +11,8 @@ public class KernelProcess extends AbstractProcess {
   @Override
   public void run() {
     GOSLogger.logMain("Initting");
+    var scheduler = new Scheduler();
+    scheduler.startTimer(1000, 1000);
     GOSLogger.logMain(
         "semaphore permits before stop: " + semaphore.availablePermits());
     stop();

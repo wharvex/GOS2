@@ -24,7 +24,7 @@ public class Scheduler {
     currentProcess = process;
   }
 
-  public void startTimer() {
-    timer.schedule(new TimerTaskExt(), 0, 1000);
+  public void startTimer(int delay, int period) {
+    timer.schedule(new TimerTaskExt(), delay, period);
   }
 }
