@@ -39,10 +39,8 @@ public class JFrameExt extends JFrame {
     add(scrollPane, BorderLayout.CENTER);
 
     // Add event listeners.
-    startOSButton.addActionListener(
-        e -> BootloaderSingleton_cpuland.startOS());
-    shutdownButton.addActionListener(
-        e -> BootloaderSingleton_cpuland.requestShutdown());
+    startOSButton.addActionListener(new StartKernelActionListener());
+    shutdownButton.addActionListener(new StopKernelActionListener());
   }
 
   public static JFrameExt getInstance() {
