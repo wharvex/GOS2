@@ -1,17 +1,15 @@
 package com.wharvex.gos.ui;
 
-import com.wharvex.gos.cpuland.BootloaderSingleton_cpuland;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class JFrameExt extends JFrame {
+public class JFrameExt_ui extends JFrame {
   private JTextArea console;
   private JButton startOSButton;
   private JButton shutdownButton;
-  private static JFrameExt instance;
+  private static JFrameExt_ui instance;
 
-  private JFrameExt() {
+  private JFrameExt_ui() {
     initialize();
   }
 
@@ -39,13 +37,13 @@ public class JFrameExt extends JFrame {
     add(scrollPane, BorderLayout.CENTER);
 
     // Add event listeners.
-    startOSButton.addActionListener(new StartKernelActionListener());
-    shutdownButton.addActionListener(new StopKernelActionListener());
+    startOSButton.addActionListener(new StartKernelActionListener_ui());
+    shutdownButton.addActionListener(new StopKernelActionListener_ui());
   }
 
-  public static JFrameExt getInstance() {
+  public static JFrameExt_ui getInstance() {
     if (instance == null) {
-      instance = new JFrameExt();
+      instance = new JFrameExt_ui();
     }
     return instance;
   }

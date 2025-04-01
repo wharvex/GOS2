@@ -1,6 +1,6 @@
 package com.wharvex.gos.utils;
 
-import com.wharvex.gos.ui.JFrameExt;
+import com.wharvex.gos.ui.JFrameExt_ui;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class GOSLogger {
     GOSLoggerSingleton.getInstance().writeToFile(xml);
     var currentThreadName = Thread.currentThread().getName();
     SwingUtilities.invokeLater(() -> {
-      JFrameExt.getInstance().writeToConsole(
+      JFrameExt_ui.getInstance().writeToConsole(
           "Source: " + currentThreadName + "; Message: " + message);
     });
   }

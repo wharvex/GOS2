@@ -3,13 +3,13 @@
  */
 package com.wharvex.gos.app;
 
-import com.wharvex.gos.ui.JFrameExt;
+import com.wharvex.gos.ui.JFrameExt_ui;
 import com.wharvex.gos.utils.ShutdownRunnable;
 
 import javax.swing.*;
 
 public class App {
-  private static JFrameExt frame = JFrameExt.getInstance();
+  private static JFrameExt_ui frame = JFrameExt_ui.getInstance();
   private static ShutdownRunnable shutdownRunnable = new ShutdownRunnable();
 
   public String getGreeting() {
@@ -21,7 +21,7 @@ public class App {
     Runtime.getRuntime().addShutdownHook(new Thread(new ShutdownRunnable()));
 
     SwingUtilities.invokeLater(() -> {
-      JFrameExt.getInstance().setVisible(true);
+      JFrameExt_ui.getInstance().setVisible(true);
     });
   }
 }
