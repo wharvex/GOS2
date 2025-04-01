@@ -1,6 +1,6 @@
 package com.wharvex.gos.ui;
 
-import com.wharvex.gos.cpuland.Bootloader;
+import com.wharvex.gos.cpuland.BootloaderSingleton_cpuland;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class JFrameExt extends JFrame {
     console = new JTextArea();
     console.setEditable(false);
     JScrollPane scrollPane = new JScrollPane(console);
-    startOSButton = new JButton("Start OS");
+    startOSButton = new JButton("Start OSSingleton_osland");
     shutdownButton = new JButton("Request Shutdown");
     startOSButton.setEnabled(true);
     shutdownButton.setEnabled(false);
@@ -39,8 +39,10 @@ public class JFrameExt extends JFrame {
     add(scrollPane, BorderLayout.CENTER);
 
     // Add event listeners.
-    startOSButton.addActionListener(e -> Bootloader.startOS());
-    shutdownButton.addActionListener(e -> Bootloader.requestShutdown());
+    startOSButton.addActionListener(
+        e -> BootloaderSingleton_cpuland.startOS());
+    shutdownButton.addActionListener(
+        e -> BootloaderSingleton_cpuland.requestShutdown());
   }
 
   public static JFrameExt getInstance() {
