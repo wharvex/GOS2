@@ -9,6 +9,9 @@ import com.wharvex.gos.utils.ShutdownRunnable;
 import javax.swing.*;
 
 public class App {
+  private static JFrameExt frame = JFrameExt.getInstance();
+  private static ShutdownRunnable shutdownRunnable = new ShutdownRunnable();
+
   public String getGreeting() {
     return "Hello World!";
   }

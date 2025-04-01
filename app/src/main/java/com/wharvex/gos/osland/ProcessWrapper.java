@@ -22,12 +22,12 @@ public class ProcessWrapper {
     thread = new Thread(task, task.getThreadName());
   }
 
-  private AbstractProcess getKernelProcess() {
+  private Stoppable getKernelProcess() {
     try {
       var kernelClass =
           Class.forName("com.wharvex.gos.kernelland.KernelProcess");
       var kernelConstructor = kernelClass.getConstructor();
-      return (AbstractProcess) kernelConstructor.newInstance();
+      return (Stoppable) kernelConstructor.newInstance();
     } catch (Exception e) {
       GOSLogger.logMain("bad");
       throw new RuntimeException(e);

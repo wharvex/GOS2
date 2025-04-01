@@ -12,11 +12,12 @@ public class OS {
     kernelProcess.start();
   }
 
-  public static void createProcess() {
-
+  public static void createProcess(Stoppable process) {
+    var processWrapper = new ProcessWrapper(process);
+    switchProcess(CallType.CREATE_PROCESS);
   }
 
-  public static void switchProcess() {
+  public static void switchProcess(CallType callType) {
 
   }
 }
