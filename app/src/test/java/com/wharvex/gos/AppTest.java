@@ -3,6 +3,7 @@
  */
 package com.wharvex.gos;
 
+import com.wharvex.gos.app.App;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,6 +1,5 @@
 package com.wharvex.gos.ui;
 
-import com.wharvex.gos.App;
 import com.wharvex.gos.cpuland.Bootloader;
 
 import javax.swing.*;
